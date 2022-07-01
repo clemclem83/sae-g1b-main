@@ -1,0 +1,12 @@
+@startuml
+scale 1.5
+class Module
+
+class Prof
+
+Module "*" --> Prof : A pour responsable
+Prof "*" --> Module : Est spécialiste
+
+
+Module "*" -> Module : A pour père
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+scale 1.5
+
+class Module{
+-code : String
+-libelle : String
+-hCoursPrev : int
+-hCoursRea : int
+-hTpPrev : int
+-hTpRea : int
+-discipline : String
+-coefCc : int
+}
+
+class Prof{
+-numProf : int
+-nomProf : String
+-prenomProf : String
+-adrProf : String
+-cpProf : String
+-villeProf : String
+}
+
+class Etudiant{
+-numEt : int
+-nomEt : String
+-prenomEt : String
+-cpEt : String
+-villeEt : String
+-annee : int
+-groupe : int
+}
+
+Module -[hidden]> Prof
+Prof -[hidden]> Etudiant
+@enduml

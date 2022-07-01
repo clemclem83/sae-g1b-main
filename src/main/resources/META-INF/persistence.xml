@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<persistence xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0">
-    <persistence-unit name="gestionUsagesPU" transaction-type="RESOURCE_LOCAL">
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="gestionPedaPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>fr.univ_amu.iut.entity.Etudiant</class>
+        <class>fr.univ_amu.iut.entity.Module</class>
+        <class>fr.univ_amu.iut.entity.Prof</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <shared-cache-mode>NONE</shared-cache-mode>
 
         <properties>
             <!-- database connection properties -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://tyke.db.elephantsql.com/ayfkdhll"/>
-            <property name="jakarta.persistence.jdbc.user" value="ayfkdhll"/>
-            <property name="jakarta.persistence.jdbc.password" value="701Bt8fWy1mHPFgG6NFCqqfrIIeYzj8g"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby:memory:employeBD;create=true"/>
+            <property name="jakarta.persistence.jdbc.user" value=""/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
 
-            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
-            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.weaving" value="static"/>
+
+            <!-- database creation properties -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create" />
+
+            <property name="jakarta.persistence.schema-generation.create-source" value="script"/>
+            <property name="jakarta.persistence.schema-generation.create-script-source" value="META-INF/sql/create-db.sql" />
+
+            <property name="jakarta.persistence.schema-generation.scripts.drop-source" value="script"/>
+            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="META-INF/sql/drop-db.sql"/>
+
+            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/data.sql"/>
 
             <!-- configure logging -->
-            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.connection" value="false"/>
+            <property name="eclipselink.logging.thread" value="false"/>
+            <property name="eclipselink.logging.timestamp" value="false"/>
+            <property name="eclipselink.logging.session" value="false"/>
             <property name="eclipselink.logging.level.sql" value="FINE"/>
-            <property name="eclipselink.logging.parameters" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -1,0 +1,8 @@
+@startuml
+scale 1.5
+class Etudiant
+
+class Module
+
+Etudiant "*" -- "*" Module : Notation
+@enduml

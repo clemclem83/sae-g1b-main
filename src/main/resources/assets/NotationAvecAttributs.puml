@@ -1,0 +1,17 @@
+@startuml
+
+scale 1.5
+
+class Etudiant
+
+class Module
+
+class Notation{
+-moyCC : float
+-moyTest : float
+}
+
+Etudiant "*" - "*" Module
+(Etudiant, Module) .. Notation
+
+@enduml
